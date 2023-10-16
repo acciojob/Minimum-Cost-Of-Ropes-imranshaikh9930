@@ -1,4 +1,4 @@
-function calculateMinCost(ropes) {
+function minCostToConnectRopes(ropes) {
   //your code here
 	ropes = ropes.map(String);
    while (ropes.length > 1) {
@@ -20,3 +20,17 @@ function calculateMinCost(ropes) {
   
   
 }  
+
+
+function calculateMinCost() {
+            const ropeLengthsInput = document.getElementById("rope-lengths");
+            const resultElement = document.getElementById("result");
+
+            const ropeLengths = ropeLengthsInput.value.split(',').map(Number);
+
+            // Call the function to calculate the minimum cost
+            const minimumCost = minCostToConnectRopes(ropeLengths);
+
+            // Display the result
+            resultElement.textContent = minimumCost;
+        }
