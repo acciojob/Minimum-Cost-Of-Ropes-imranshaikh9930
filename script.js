@@ -1,24 +1,30 @@
 function minCostToConnectRopes(ropes) {
   //your code here
-	ropes = ropes.map(String);
-   while (ropes.length > 1) {
-        // Convert the ropes to numbers
-        ropes = ropes.map(Number);
-
-        // Find the two shortest ropes in the array.
-        ropes.sort((a, b) => a - b);
-
-        // Combine the two shortest ropes.
-        const combinedRope = ropes[0] + ropes[1];
-
-        // Remove the two shortest ropes and add the combined rope.
-        ropes.splice(0, 2, combinedRope);
-    }
-
-    // The last rope in the array is the minimum cost.
-    return ropes[0];
-  
-  
+ let pq = new MinHeap(n);
+        for(let i = 0; i < n; i++) {
+            pq.insertKey(arr[i]);
+        }
+        pq.MinHeapify(0);
+        let res = 0;
+    
+        //using a loop while there is more than one element in priority queue.
+        while (pq.heap_size > 1) 
+        {
+            //storing the first and second numbers from priority queue.
+            let first = pq.extractMin();
+            
+            let second = pq.extractMin();
+         
+    
+            //adding their sum in result.
+            res += first + second;
+            
+            //pushing the sum of first and second numbers in priority queue.
+            pq.insertKey(first + second);
+            //pq.MinHeapify(0);
+        }
+        //returning the result.
+        return res;
 }  
 
 
