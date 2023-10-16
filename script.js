@@ -1,10 +1,12 @@
 function calculateMinCost(ropes) {
   //your code here
 	ropes = ropes.map(String);
+   while (ropes.length > 1) {
+        // Convert the ropes to numbers
+        ropes = ropes.map(Number);
 
-    while (ropes.length > 1) {
         // Find the two shortest ropes in the array.
-        ropes.sort((a, b) => a.length - b.length);
+        ropes.sort((a, b) => a - b);
 
         // Combine the two shortest ropes.
         const combinedRope = ropes[0] + ropes[1];
@@ -14,8 +16,7 @@ function calculateMinCost(ropes) {
     }
 
     // The last rope in the array is the minimum cost.
-    return parseInt(ropes[0]);
-  
+    return ropes[0];
   
   
 }  
